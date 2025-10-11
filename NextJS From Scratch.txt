@@ -1,0 +1,24 @@
+Next.JS
+------------------------------------------------------------------------------------------------------------------------------------
+# VS code plugins:
+VS Code ES7+ React/Redux/React-Native/JS snippets
+JavaScript and TypeScript Nightly
+Tailwind CSS IntelliSense
+------------------------------------------------------------------------------------------------------------------------------------
+# Create next project: https://nextjs.org/docs/app/getting-started/installation#automatic-installation
+npx create-next-app@13.4.13
+npm install --save-dev tailwindcss @tailwindcss/postcss postcss // To make sure we have these in our devDependencies or dependencies
+
+Essential Changes:	
+	add this'@tailwindcss/postcss': {}, to postcss.config.js plugins
+	modify the globals.css file:
+	 						@import "tailwindcss";
+			        /* @tailwind base;
+			        @tailwind components; */
+			        @tailwind utilities;
+
+/* or install the latest version with no changes : ) */
+npx create-next-app@latest
+
+npm run dev
+------------------------------------------------------------------------------------------------------------------------------------
