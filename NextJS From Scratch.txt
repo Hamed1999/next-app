@@ -22,3 +22,5 @@ npx create-next-app@latest
 
 npm run dev
 ------------------------------------------------------------------------------------------------------------------------------------
+#Daisy UI library: https://daisyui.com/docs/install/ , https://daisyui.com/docs/install/nextjs/
+npm i -D daisyui@latest

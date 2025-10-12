@@ -3,7 +3,12 @@
 const AddToCart = () => {
   return (
     <div>
-      <button onClick={() => console.log("Clicked!")}>Add to cart</button>
+      <button
+        className="btn btn-secondary rounded-2xl"
+        onClick={() => console.log("Clicked!")}
+      >
+        AddToCart
+      </button>
     </div>
   );
 };
