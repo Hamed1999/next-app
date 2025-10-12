@@ -22,5 +22,8 @@ npx create-next-app@latest
 
 npm run dev
 ------------------------------------------------------------------------------------------------------------------------------------
-#Daisy UI library: https://daisyui.com/docs/install/ , https://daisyui.com/docs/install/nextjs/
+# Daisy UI library: https://daisyui.com/docs/install/ , https://daisyui.com/docs/install/nextjs/
 npm i -D daisyui@latest
+------------------------------------------------------------------------------------------------------------------------------------
+# using npm fast sort library: https://www.npmjs.com/package/fast-sort
+npm i fast-sort
