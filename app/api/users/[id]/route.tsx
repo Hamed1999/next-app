@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import Users, { User } from "../UsersData";
+import Users from "../UsersData";
 
 export async function GET(
   request: NextRequest,
