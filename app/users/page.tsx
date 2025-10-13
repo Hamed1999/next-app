@@ -15,15 +15,7 @@ const UsersPage = async ({ searchParams }: Props) => {
         NEW USER
       </Link>
       <Suspense
-        fallback={
-          <>
-            <span className="loading loading-ball loading-xs"></span>
-            <span className="loading loading-ball loading-sm"></span>
-            <span className="loading loading-ball loading-md"></span>
-            <span className="loading loading-ball loading-lg"></span>
-            <span className="loading loading-ball loading-xl"></span>
-          </>
-        }
+        fallback={<span className="loading loading-spinner loading-xl"></span>}
       >
         <UserTable sortOrder={sortOrder} />
       </Suspense>
