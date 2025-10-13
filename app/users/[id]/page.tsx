@@ -1,11 +1,12 @@
 import { notFound } from "next/navigation";
 
 interface Props {
-  params: { id: number };
+  params: Promise<{ id: number }>;
 }
 
-const UserDetailPage = ({ params: { id } }: Props) => {
-  if (id > 10) notFound();
+const UserDetailPage = async ({ params }: Props) => {
+  const id = new Number((await params).id).valueOf();
+  if (id > 10 || !Number.isInteger(id)) notFound();
   return (
     <>
       <h1>User Detail Page</h1>
