@@ -10,6 +10,9 @@ const UsersPage = async ({ searchParams }: Props) => {
   return (
     <>
       <h1>Users Page</h1>
+      <Link href="/users/new" className="btn btn-soft mb-3 rounded-md">
+        NEW USER
+      </Link>
       <UserTable sortOrder={sortOrder} />
       <Link href="../">Home Page</Link>
     </>
