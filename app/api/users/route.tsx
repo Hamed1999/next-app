@@ -1,8 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
+import Users from "./UsersData";
 
 export function GET(request: NextRequest) {
-  return NextResponse.json([
-    { id: 1, name: "Hamed" },
-    { id: 2, name: "Mosh" },
-  ]);
+  return NextResponse.json(Users);
 }
