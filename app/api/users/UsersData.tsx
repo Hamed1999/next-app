@@ -78,8 +78,20 @@ export async function updateUser(user: User): Promise<User> {
   if (idx === -1) {
     throw new Error(`User with id=${user.id} not found.`);
   }
- 
+
   users[idx].name = user.name;
   await writeUsers(users);
   return users[idx];
+}
+
+export async function removeUser(id: number): Promise<User[]> {
+  const users = await readUsers();
+  const idx = users.findIndex((u) => u.id === id);
+  if (idx === -1) {
+    throw new Error(`User with id=${id} not found.`);
+  }
+
+  users.splice(idx, 1);
+  await writeUsers(users);
+  return users;
 }

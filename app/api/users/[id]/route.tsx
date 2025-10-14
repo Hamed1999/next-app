@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { getUserById, updateUser, User } from "../UsersData";
+import { getUserById, removeUser, updateUser, User } from "../UsersData";
 
 async function validateUser(
   inputId: number
@@ -42,4 +42,15 @@ export async function PUT(
   const { name }: { name: string } = await request.json();
   result.user.name = name;
   return NextResponse.json(await updateUser(result.user));
+}
+
+export async function DELETE(
+  request: NextRequest,
+  { params }: { params: { id: number } }
+) {
+  const result = await validateUser(params.id);
+
+  if ("error" in result) return result.error;
+
+  return NextResponse.json(await removeUser(result.user.id), { status: 200 });
 }
