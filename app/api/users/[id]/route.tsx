@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
-import { getUserById, removeUser, updateUser, User } from "../UsersData";
+import { getUserById, removeUser, updateUser, User } from "../users-db";
+import schema, { SchemaType } from "../schema";
 
 async function validateUser(
   inputId: number
@@ -39,8 +40,12 @@ export async function PUT(
 
   if ("error" in result) return result.error;
 
-  const { name }: { name: string } = await request.json();
-  result.user.name = name;
+  const body: SchemaType = await request.json();
+  const validation = schema.safeParse(body);
+  if (!validation.success)
+    return NextResponse.json(validation.error.issues, { status: 400 });
+  result.user.name = body.name;
+  result.user.email = body.email;
   return NextResponse.json(await updateUser(result.user));
 }
 

@@ -1,42 +1,52 @@
 [
   {
     "id": 1,
-    "name": "Hamed"
+    "name": "Hamed",
+    "email": "hsalmanizadegan@gmail.com"
   },
   {
     "id": 2,
-    "name": "Mosh"
+    "name": "Mosh",
+    "email": "mosh@gmail.com"
   },
   {
     "id": 3,
-    "name": "Mahdi"
+    "name": "Mahdi",
+    "email": "mahdi@gmail.com"
   },
   {
     "id": 4,
-    "name": "John"
+    "name": "John",
+    "email": "john@gmail.com"
   },
   {
     "id": 5,
-    "name": "Mahmoud"
+    "name": "Mahmoud",
+    "email": "mahmoud@gmail.com"
   },
   {
     "id": 6,
-    "name": "Homa"
+    "name": "Homa",
+    "email": "homa@gmail.com"
   },
   {
     "id": 7,
-    "name": "Mobina"
+    "name": "Mobina",
+    "email": "mobina@gmail.com"
   },
   {
     "id": 8,
-    "name": "Zahra"
+    "name": "Zahra",
+    "email": "zahra@gmail.com"
   },
   {
     "id": 9,
-    "name": "Masih"
+    "name": "Masih",
+    "email": "masih@gmail.com"
   },
   {
     "id": 10,
-    "name": "Arsalan"
+    "name": "Arsalan",
+    "email": "arsalan@gmail.com"
   }
 ]
