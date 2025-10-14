@@ -36,6 +36,9 @@ body {
   h1 {
     @apply font-extrabold text-2xl mb-3;
   }
+  h2 {
+    @apply font-bold mt-2;
+  }
 }
 
 @layer components{
