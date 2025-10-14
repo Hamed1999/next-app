@@ -7,14 +7,20 @@ export default function Home() {
       <h1>Hello World! I&apos;m Hamed.</h1>
       <div>
         <h2>
-          The Users API exposes RESTful endpoints supporting{" "}
+          The Users and Products APIs expose RESTful endpoints supporting{" "}
           <strong>GET</strong>, <strong>POST</strong>, <strong>PUT</strong>, and{" "}
           <strong>DELETE</strong> operations for user resource management.
         </h2>
         <p>
-          Base URL:{" "}
+          Users Base URL:{" "}
           <Link href="/api/users" className="btn btn-link" target="_blank">
             /api/users
+          </Link>
+        </p>
+        <p>
+          Products Base URL:{" "}
+          <Link href="/api/products" className="btn btn-link" target="_blank">
+            /api/products
           </Link>
         </p>
       </div>

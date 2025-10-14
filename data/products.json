@@ -1,0 +1,27 @@
+[
+  {
+    "id": 1,
+    "name": "Milk",
+    "price": 12.5
+  },
+  {
+    "id": 2,
+    "name": "Chocolate",
+    "price": 87.5
+  },
+  {
+    "id": 3,
+    "name": "Bread",
+    "price": 1.87
+  },
+  {
+    "id": 4,
+    "name": "Shampoo",
+    "price": 24.65
+  },
+  {
+    "id": 5,
+    "name": "egg",
+    "price": 0.85
+  }
+]

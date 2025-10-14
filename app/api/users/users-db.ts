@@ -88,7 +88,7 @@ export async function updateUser(user: User): Promise<User> {
     throw new Error(`User with id=${user.id} not found.`);
   }
 
-  users[idx].name = user.name;
+  users[idx] = user;
   await writeUsers(users);
   return users[idx];
 }
