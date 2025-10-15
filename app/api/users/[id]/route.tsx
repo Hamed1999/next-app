@@ -1,6 +1,17 @@
 import { NextRequest, NextResponse } from "next/server";
-import { getUserById, removeUser, updateUser, User } from "../users-db";
+// import { getUserById, removeUser, updateUser, User } from "../users-db";
 import schema, { SchemaType } from "../schema";
+import { prisma } from "@/prisma/client";
+import { email } from "zod";
+
+interface User {
+  id: number;
+  email: string;
+  name: string;
+  followers: number;
+  isActive: boolean;
+  registeredAt: Date;
+}
 
 async function validateUser(
   inputId: number
@@ -11,7 +22,10 @@ async function validateUser(
       error: NextResponse.json({ error: "invalid id" }, { status: 400 }),
     };
 
-  const user = await getUserById(id);
+  // const user = await getUserById(id);
+  const user = await prisma.user.findUnique({
+    where: { id: id },
+  });
   if (!user)
     return {
       error: NextResponse.json(
@@ -46,7 +60,25 @@ export async function PUT(
     return NextResponse.json(validation.error.issues, { status: 400 });
   result.user.name = body.name;
   result.user.email = body.email;
-  return NextResponse.json(await updateUser(result.user));
+  // return NextResponse.json(await updateUser(result.user));
+  const existingUser = await prisma.user.findFirst({
+    where: {
+      email: body.email,
+      NOT: { id: result.user.id },
+    },
+  });
+  if (existingUser)
+    return NextResponse.json(
+      { error: "User with this email already exist." },
+      { status: 400 }
+    );
+
+  return NextResponse.json(
+    await prisma.user.update({
+      where: { email: result.user.email },
+      data: { name: result.user.name, email: result.user.email },
+    })
+  );
 }
 
 export async function DELETE(
@@ -57,5 +89,9 @@ export async function DELETE(
 
   if ("error" in result) return result.error;
 
-  return NextResponse.json(await removeUser(result.user.id), { status: 200 });
+  // return NextResponse.json(await removeUser(result.user.id), { status: 200 });
+  return NextResponse.json(
+    await prisma.user.delete({ where: { id: result.user.id } }),
+    { status: 200 }
+  );
 }
