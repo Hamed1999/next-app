@@ -1,11 +1,20 @@
 import { NextRequest, NextResponse } from "next/server";
-import {
-  getProductById,
-  removeProduct,
-  updateProduct,
-  Product,
-} from "../products-db";
+// import {
+//   getProductById,
+//   removeProduct,
+//   updateProduct,
+//   Product,
+// } from "../products-db";
 import schema, { SchemaType } from "../schema";
+import { prisma } from "@/prisma/client";
+
+interface Product {
+  id: number;
+  name: string;
+  price: number;
+  isAvailable: boolean;
+  registeredAt: Date;
+}
 
 async function validateProduct(
   inputId: number
@@ -16,7 +25,8 @@ async function validateProduct(
       error: NextResponse.json({ error: "invalid id" }, { status: 400 }),
     };
 
-  const product = await getProductById(id);
+  // const product = await getProductById(id);
+  const product = await prisma.product.findUnique({ where: { id: id } });
   if (!product)
     return {
       error: NextResponse.json(
@@ -51,7 +61,25 @@ export async function PUT(
     return NextResponse.json(validation.error.issues, { status: 400 });
   result.product.name = body.name;
   result.product.price = body.price;
-  return NextResponse.json(await updateProduct(result.product));
+  // return NextResponse.json(await updateProduct(result.product));
+  const existingProduct = await prisma.product.findFirst({
+    where: {
+      name: body.name,
+      NOT: { id: result.product.id },
+    },
+  });
+  if (existingProduct)
+    return NextResponse.json(
+      { error: "Product with this name already exist." },
+      { status: 400 }
+    );
+
+  return NextResponse.json(
+    await prisma.product.update({
+      where: { id: result.product.id },
+      data: { name: result.product.name, price: result.product.price },
+    })
+  );
 }
 
 export async function DELETE(
@@ -62,7 +90,13 @@ export async function DELETE(
 
   if ("error" in result) return result.error;
 
-  return NextResponse.json(await removeProduct(result.product.id), {
-    status: 200,
-  });
+  // return NextResponse.json(await removeProduct(result.product.id), {
+  //   status: 200,
+  // });
+  return NextResponse.json(
+    await prisma.product.delete({ where: { id: result.product.id } }),
+    {
+      status: 200,
+    }
+  );
 }

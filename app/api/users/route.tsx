@@ -15,7 +15,9 @@ export async function POST(request: NextRequest) {
   if (!validation.success)
     return NextResponse.json(validation.error.issues, { status: 400 });
   // const created = await addUser(body);
-  const user = await prisma.user.findUnique({ where: { email: body.email } });
+  const user = await prisma.user.findUnique({
+    where: { email: body.email },
+  });
   if (user)
     return NextResponse.json(
       { error: "User with this email already exist." },

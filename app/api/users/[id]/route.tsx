@@ -2,7 +2,6 @@ import { NextRequest, NextResponse } from "next/server";
 // import { getUserById, removeUser, updateUser, User } from "../users-db";
 import schema, { SchemaType } from "../schema";
 import { prisma } from "@/prisma/client";
-import { email } from "zod";
 
 interface User {
   id: number;
