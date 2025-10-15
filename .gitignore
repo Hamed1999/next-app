@@ -41,6 +41,9 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
+# Custom DB: Json file
+data/*
+
 /app/generated/prisma
 
 
