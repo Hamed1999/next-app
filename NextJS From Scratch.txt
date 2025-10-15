@@ -25,9 +25,14 @@ npm run dev
 # Daisy UI library: https://daisyui.com/docs/install/ , https://daisyui.com/docs/install/nextjs/
 npm i -D daisyui@latest
 ------------------------------------------------------------------------------------------------------------------------------------
-# using npm fast sort library: https://www.npmjs.com/package/fast-sort
+# Using npm fast sort library: https://www.npmjs.com/package/fast-sort
 npm i fast-sort
 ------------------------------------------------------------------------------------------------------------------------------------
-# installing Zod for schema validation
+# Installing Zod for schema validation
 npm i zod
 ------------------------------------------------------------------------------------------------------------------------------------
+# Adding Prisma Extension & install: https://www.prisma.io/docs/orm/overview/databases/mysql
+npm i prisma
+npx prisma init
+npx prisma format
+npx prisma migrate dev
