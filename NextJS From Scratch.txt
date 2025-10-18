@@ -46,3 +46,5 @@ npx auth secret
 
 	+ To generate a random key: 
 	openssl rand -base64 32
+
+	+Providers: https://authjs.dev/getting-started/providers/google
