@@ -39,3 +39,10 @@ npx prisma migrate dev
 ------------------------------------------------------------------------------------------------------------------------------------
 # Adding Cloudinary as cloud platform: https://next.cloudinary.dev/installation
 npm i next-cloudinary
+------------------------------------------------------------------------------------------------------------------------------------
+# Authentication (next-aut): https://authjs.dev/getting-started/installation, https://next-auth.js.org/getting-started/example
+npm install next-auth@beta
+npx auth secret
+
+	+ To generate a random key: 
+	openssl rand -base64 32
